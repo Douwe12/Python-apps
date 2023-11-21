@@ -1,7 +1,8 @@
 import webbrowser
 
 def open_url(url):
-    webbrowser.open(url)
+    chrome_path = 'C:\Program Files\Google\Chrome\Application\Firefox.exe'
+    webbrowser.open(chrome_path, url)
 
 
 url = input("Enter url: ")
