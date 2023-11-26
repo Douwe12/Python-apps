@@ -10,7 +10,6 @@ pg.init()
 
 width, height = 800, 600
 screen = pg.display.set_mode((width, height))
-# background = pg.image.load("GameTest1\pg_background.png")
 pg.display.set_caption("Movement")
 
 player_size = 20
