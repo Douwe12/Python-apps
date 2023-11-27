@@ -34,16 +34,19 @@ star_speed = 1
 
 # initialize bullet
 bullets = []
+bullet_interval = 600
+shooting_timer = 0
 
-bullet_height = 8
-bullet_width = 3
-bullet_speed = 2
+bullet_height = 10
+bullet_width = 4
+bullet_speed = 3
+
 
 while run:
-    star_count += clock.tick(60)
-
+    timer = clock.tick(60)
+    star_count += timer
     if star_count > cooldown:
-        star = Star(r.randint(5, width -5), 0, star_width, star_height, star_speed)
+        star = Star(r.randint(5, width -5), 0, star_width, star_height, star_speed, bullet_interval)
         stars.append((star, (r.randint(10, width - 10), r.randint(20, height // 1.5))))
         star_count = 0
     for event in pg.event.get():
@@ -81,13 +84,15 @@ while run:
 
     # render shooting stars + shooting
     for star in shooting_stars:
-        pg.draw.rect(screen, (100, 200, 24), (star[0].x, star[0].y, star[0].width, star[0].height))
+        star = star[0]
+        pg.draw.rect(screen, (100, 200, 24), (star.x, star.y, star.width, star.height))
 
-        bullet = Bullet(star[0].x, star[0].y, bullet_width, bullet_height, bullet_speed, False)
-        bullets.append((bullet, star))
+        star.shoot_timer += timer
+        star.shoot_bullet(star.x, star.y, bullet_width, bullet_height, bullet_speed, bullets)
+        star.shoot_bullet(star.x + star.width, star.y, bullet_width,  bullet_height, bullet_speed, bullets)
 
 
-        if star[0].colliderect(player):
+        if star.colliderect(player):
             run = False
             print("Player died")
             break
@@ -95,7 +100,8 @@ while run:
         
     for bullet in bullets:
         pg.draw.rect(screen, (0, 0, 0), (bullet[0].x, bullet[0].y, bullet[0].width, bullet[0].height))
-        bullet[0].move_down()
+        if bullet[0].y < height + bullet[0].height:
+            bullet[0].move_down()
 
 
         if bullet[0].colliderect(player):

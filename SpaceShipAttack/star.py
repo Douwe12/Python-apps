@@ -1,9 +1,12 @@
 import pygame as pg
+from bullet import Bullet
 
 class Star(pg.Rect):
-    def __init__(self, x, y, width, height, speed):
+    def __init__(self, x, y, width, height, speed, shooting_interval):
         super().__init__(x, y, width, height)
         self.speed = speed
+        self.interval = shooting_interval
+        self.shoot_timer = 0
     
 
     def move_down(self):
@@ -20,3 +23,9 @@ class Star(pg.Rect):
 
         self.x += (vx * self.speed) 
         self.y += (vy * self.speed)
+
+    def shoot_bullet(self, x, y, bullet_width, bullet_height, bullet_speed, bullets):
+        if self.shoot_timer > self.interval:
+            self.shoot_timer = 0
+            bullet = Bullet(x, y, bullet_width, bullet_height, bullet_speed)
+            bullets.append((bullet, self))

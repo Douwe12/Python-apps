@@ -3,21 +3,13 @@ import time
 import threading
 
 class Bullet(pg.Rect):
-    def __init__(self, x, y, width, height, speed, on_cooldown):
+    def __init__(self, x, y, width, height, speed):
         super().__init__(x, y, width, height)
         self.speed = speed
-        self.cooldown = on_cooldown
     
 
     def move_down(self):
         self.y += self.speed
-        self.cooldown = True
-        time.sleep(2)
-        self.cooldown = False
-
-    def move_down_thread(self):
-        thread = threading.Thread(target = self.move_down())
-        thread.start()
 
     def move_up(self):
         self.y -= self.speed
