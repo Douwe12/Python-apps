@@ -1,8 +1,9 @@
 import pygame as pg
 import time
 import threading
+from object import Object
 
-class Bullet(pg.Rect):
+class Bullet(Object):
     def __init__(self, x, y, width, height, speed):
         super().__init__(x, y, width, height)
         self.speed = speed

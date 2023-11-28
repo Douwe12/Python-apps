@@ -92,7 +92,7 @@ while run:
         star.shoot_bullet(star.x + star.width, star.y, bullet_width,  bullet_height, bullet_speed, bullets)
 
 
-        if star.colliderect(player):
+        if star.colliderect(player): 
             run = False
             print("Player died")
             break

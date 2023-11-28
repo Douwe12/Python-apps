@@ -1,7 +1,8 @@
 import pygame as pg
 from bullet import Bullet
+from object import Object
 
-class Star(pg.Rect):
+class Star(Object):
     def __init__(self, x, y, width, height, speed, shooting_interval):
         super().__init__(x, y, width, height)
         self.speed = speed
