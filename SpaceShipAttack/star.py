@@ -22,8 +22,8 @@ class Star(Object):
     def move_along_vector(self, vector):
         vx, vy = vector
 
-        self.x += (vx * self.speed) 
-        self.y += (vy * self.speed)
+        self.x += (vx * self.speed / 2) 
+        self.y += (vy * self.speed / 2)
 
     def shoot_bullet(self, x, y, bullet_width, bullet_height, bullet_speed, bullets):
         if self.shoot_timer > self.interval:
