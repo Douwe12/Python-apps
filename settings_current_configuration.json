@@ -1,0 +1,80 @@
+{
+    "security.workspace.trust.untrustedFiles": "open",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "workbench.colorTheme": "Default Dark+",
+    "debug.autoExpandLazyVariables": true,
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "variable.parameter"
+                ],
+                "settings": {
+                    "foreground": "#00ccff"  
+                }
+            },
+            {
+                "scope": [
+                    "variable",
+                    "variable.other"
+                ],
+                "settings": {
+                    "foreground": "#52edf8"  
+                }
+            },
+            {
+                "scope": [
+                    "entity.name.class"
+                ],
+                "settings": {
+                    "foreground": "#002200"  
+                }
+            },
+            {
+                "scope": [
+                    "entity.name.method"
+                ],
+                "settings": {
+                    "foreground": "#71f871"  
+                }
+            },
+            {
+                "scope": [
+                    "entity.name.function"
+                ],
+                "settings": {
+                    "foreground": "#ebf87a"  
+                }
+            },
+            {
+                "scope": [
+                    "string",
+                    "string.other"
+                ],
+                "settings": {
+                    "foreground": "#5069f7"  
+                }
+            },
+            {
+                "scope": [
+                    "punctuation.definition.string.begin",
+                    "punctuation.definition.string.end",
+                    "string.quoted.single"
+                ],
+                "settings": {
+                    "foreground": "#8f5203"  
+                }
+            }
+        ]
+    },
+    "workbench.sideBar.location": "right",
+    "codium.enable": false,
+    "tabnine.experimentalAutoImports": true
+}

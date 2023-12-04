@@ -29,14 +29,22 @@ all_sprites.add(ball)
 # initialize variables
 collision = False
 
+
+
+# initialize Score
+font = pg.font.Font(None, 24)
+
 while run:
     clock.tick(60)
     for event in pg.event.get():
         if event.type == pg.QUIT:
             run = False
+            pg.QUIT()
             break 
 
     screen.fill((255, 255, 255))
+
+
 
     keys = pg.key.get_pressed()
     # player1
@@ -82,13 +90,26 @@ while run:
 
 
     # side wall collision detection
-    if ball.x == 0:
+    print(ball.x)
+    if ball.x < 0:
         player1.points += 1
         restart()
+        print('left wall collision')
     
-    if ball.x == width - ball.radius * 2:
+    if ball.x > width - ball.radius * 2:
         player2.points += 1
         restart()
+        print("right wall collision")
+
+
+    left_text = font.render(f'Player 1 score: {player1.points}', True, (0, 0, 0))
+    left_text_rect = left_text.get_rect()
+    left_text_rect.topleft = (10, 10)
+    screen.blit(left_text, left_text_rect)
+    right_text = font.render(f'Player 2 score: {player2.points}', True, (0, 0, 0))
+    right_text_rect = right_text.get_rect()
+    right_text_rect.topright = (width - 10, 10)
+    screen.blit(right_text, right_text_rect)
 
 
 
@@ -98,6 +119,8 @@ while run:
     def restart():
         ball.x, ball.y = (player_width + width) // 2, (player_height + height) // 2
         ball.vector = (r.uniform(-1, 1), r.uniform(-1, 1))
+
+    
     
 
     pg.display.flip()
